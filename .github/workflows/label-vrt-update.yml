@@ -58,7 +58,7 @@ jobs:
           fi
 
       - name: 스토리북 아티팩트 다운로드
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v6
         with:
           name: storybook-build
 

@@ -61,7 +61,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: storybook-build
-          path: packages/primitive/storybook-static
 
       - name: 스토리북 실행
         run: |

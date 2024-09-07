@@ -50,3 +50,4 @@ jobs:
         with:
           name: storybook-build
           path: packages/primitive/storybook-static
+          retention-days: 5

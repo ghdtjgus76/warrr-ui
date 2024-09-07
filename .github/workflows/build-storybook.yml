@@ -1,0 +1,50 @@
+name: Storybook 빌드 및 아티팩트 생성
+
+on: workflow_call
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 레포지토리 체크아웃
+        uses: actions/checkout@v3
+
+      - name: Node.js 설정
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: pnpm 설치
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.6
+
+      - name: 캐시 pnpm 의존성
+        id: cache-pnpm
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: 의존성 설치
+        run: |
+          if [ ! -d "node_modules" ] || [ ! -d "~/.pnpm-store" ]; then
+            echo "저장된 캐시가 없거나 캐시가 손상되었습니다. 의존성을 설치합니다."
+            pnpm install --frozen-lockfile
+          else
+            echo "캐시가 저장되어 있어, 설치 과정을 생략합니다."
+          fi
+
+      - name: 스토리북 빌드
+        run: pnpm run build-storybook
+        working-directory: packages/primitive
+
+      - name: 스토리북 빌드 아티팩트로 저장
+        uses: actions/upload-artifact@v3
+        with:
+          name: storybook-build
+          path: ./storybook-static

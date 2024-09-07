@@ -9,7 +9,6 @@ jobs:
     uses: ghdtjgus76/warrr-ui/.github/workflows/build-storybook.yml@develop
 
   update-snapshots:
-    if: github.event.label.name == 'VRT'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

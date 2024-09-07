@@ -9,7 +9,25 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: haya14busa/action-workflow_run-status@v1
+      - name: 체크 런 생성
+        id: create-check
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.TOKEN }}
+          script: |
+            const { data: checkRun } = await github.checks.create({
+              name: 'VRT 스냅샷 업데이트',
+              head_sha: '${{ github.event.workflow_run.head_sha }}',
+              status: 'in_progress',
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              output: {
+                title: 'VRT 스냅샷 업데이트',
+                summary: 'VRT 스냅샷 업데이트가 시작되었습니다.'
+              }
+            });
+            console.log(`체크 런이 생성되었습니다. ID: ${checkRun.id}`);
+            return checkRun.id;
 
       - uses: actions/checkout@v3
         with:
@@ -86,10 +104,46 @@ jobs:
           git diff --staged --quiet || git commit -m "Update VRT snapshots in .playwright folder"
           git push origin HEAD:${{ github.head_ref }}
 
+      - name: 체크 런 업데이트 (성공)
+        if: ${{ success() }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.TOKEN }}
+          script: |
+            await github.checks.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              check_run_id: ${{ steps.create-check.outputs.check_run_id }},
+              status: 'completed',
+              conclusion: 'success',
+              output: {
+                title: 'VRT 스냅샷 업데이트',
+                summary: 'VRT 스냅샷 업데이트가 성공적으로 완료되었습니다.'
+              }
+            });
+
+      - name: 체크 런 업데이트 (실패)
+        if: ${{ failure() }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.TOKEN }}
+          script: |
+            await github.checks.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              check_run_id: ${{ steps.create-check.outputs.check_run_id }},
+              status: 'completed',
+              conclusion: 'failure',
+              output: {
+                title: 'VRT 스냅샷 업데이트',
+                summary: 'VRT 스냅샷 업데이트가 실패했습니다. 자세한 내용은 첨부된 테스트 결과와 diff 이미지를 확인해주세요.'
+              }
+            });
+
       - name: PR 코멘트 작성
         uses: actions/github-script@v6
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{secrets.TOKEN}}
           script: |
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -101,7 +155,7 @@ jobs:
       - name: VRT 레이블 제거
         uses: actions/github-script@v6
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{secrets.TOKEN}}
           script: |
             github.rest.issues.removeLabel({
               issue_number: context.issue.number,

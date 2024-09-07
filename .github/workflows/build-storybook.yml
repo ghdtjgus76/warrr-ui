@@ -46,7 +46,7 @@ jobs:
         working-directory: packages/primitive
 
       - name: 스토리북 빌드 아티팩트로 저장
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storybook-build
           path: packages/primitive/storybook-static

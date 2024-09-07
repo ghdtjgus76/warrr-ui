@@ -5,8 +5,7 @@ on:
       - develop
   workflow_run:
     workflows: [Storybook 빌드 및 아티팩트 생성]
-    types:
-      - completed
+    types: [completed]
 
 jobs:
   update-snapshots:

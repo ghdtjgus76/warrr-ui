@@ -12,6 +12,9 @@ permissions:
   pull-requests: write
 
 jobs:
+  storybook-build:
+    uses: ghdtjgus76/warrr-ui/.github/workflows/build-storybook.yml@develop
+
   vrt-test:
     runs-on: ubuntu-latest
     steps:

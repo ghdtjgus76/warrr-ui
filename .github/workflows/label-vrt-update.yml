@@ -9,6 +9,9 @@ on:
       - completed
 
 jobs:
+  storybook-build:
+    uses: ghdtjgus76/warrr-ui/.github/workflows/build-storybook.yml@develop
+
   update-snapshots:
     runs-on: ubuntu-latest
     steps:

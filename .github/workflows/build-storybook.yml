@@ -47,4 +47,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: storybook-build
-          path: ./storybook-static
+          path: packages/primitive/storybook-static

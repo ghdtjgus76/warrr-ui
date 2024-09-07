@@ -27,7 +27,7 @@ jobs:
               }
             });
             console.log(`체크 런이 생성되었습니다. ID: ${checkRun.id}`);
-            return checkRun.id;
+            return { check_run_id: checkRun.id };
 
       - uses: actions/checkout@v3
         with:
@@ -143,7 +143,7 @@ jobs:
       - name: PR 코멘트 작성
         uses: actions/github-script@v6
         with:
-          github-token: ${{secrets.TOKEN}}
+          github-token: ${{ secrets.TOKEN }}
           script: |
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -155,7 +155,7 @@ jobs:
       - name: VRT 레이블 제거
         uses: actions/github-script@v6
         with:
-          github-token: ${{secrets.TOKEN}}
+          github-token: ${{ secrets.TOKEN }}
           script: |
             github.rest.issues.removeLabel({
               issue_number: context.issue.number,

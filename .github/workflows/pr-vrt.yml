@@ -17,6 +17,7 @@ jobs:
 
   vrt-test:
     runs-on: ubuntu-latest
+    needs: storybook-build
     steps:
       - uses: actions/checkout@v3
 

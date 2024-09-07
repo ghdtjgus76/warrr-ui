@@ -1,7 +1,8 @@
 name: VRT 스냅샷 업데이트
 on:
   pull_request:
-    types: [labeled]
+    branches:
+      - develop
 
 jobs:
   build:

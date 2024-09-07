@@ -3,14 +3,14 @@ on:
   pull_request:
     branches:
       - develop
+  workflow_run:
+    workflows: ["Storybook 빌드 및 아티팩트 생성"]
+    types:
+      - completed
 
 jobs:
-  build:
-    uses: ghdtjgus76/warrr-ui/.github/workflows/build-storybook.yml@develop
-
   update-snapshots:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v3
         with:

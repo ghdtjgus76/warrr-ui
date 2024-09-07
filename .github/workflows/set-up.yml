@@ -32,11 +32,3 @@ jobs:
 
       - name: 의존성 설치
         run: pnpm install --frozen-lockfile
-
-      - name: 의존성 아티팩트로 저장
-        uses: actions/upload-artifact@v3
-        with:
-          name: pnpm-dependencies
-          path: |
-            node_modules
-            ~/.pnpm-store

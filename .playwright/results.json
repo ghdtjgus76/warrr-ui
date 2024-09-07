@@ -114,16 +114,12 @@
                     {
                       "workerIndex": 0,
                       "status": "passed",
-                      "duration": 1025,
+                      "duration": 690,
                       "errors": [],
-                      "stdout": [
-                        {
-                          "text": "/home/runner/work/warrr-ui/warrr-ui/.playwright/snapshots/components/Button.test.ts-snapshots/Button-컴포넌트-primary-시각적-회귀-테스트-1-chromium-linux.png is re-generated, writing actual.\n"
-                        }
-                      ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-09-07T07:38:08.910Z",
+                      "startTime": "2024-09-07T07:59:44.036Z",
                       "attachments": []
                     }
                   ],
@@ -150,12 +146,12 @@
                     {
                       "workerIndex": 0,
                       "status": "passed",
-                      "duration": 802,
+                      "duration": 881,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-09-07T07:38:10.119Z",
+                      "startTime": "2024-09-07T07:59:45.318Z",
                       "attachments": []
                     }
                   ],
@@ -182,16 +178,12 @@
                     {
                       "workerIndex": 1,
                       "status": "passed",
-                      "duration": 1680,
+                      "duration": 1296,
                       "errors": [],
-                      "stdout": [
-                        {
-                          "text": "/home/runner/work/warrr-ui/warrr-ui/.playwright/snapshots/components/Button.test.ts-snapshots/Button-컴포넌트-primary-시각적-회귀-테스트-1-firefox-linux.png is re-generated, writing actual.\n"
-                        }
-                      ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-09-07T07:38:11.417Z",
+                      "startTime": "2024-09-07T07:59:46.712Z",
                       "attachments": []
                     }
                   ],
@@ -218,12 +210,12 @@
                     {
                       "workerIndex": 1,
                       "status": "passed",
-                      "duration": 939,
+                      "duration": 952,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-09-07T07:38:13.464Z",
+                      "startTime": "2024-09-07T07:59:48.486Z",
                       "attachments": []
                     }
                   ],
@@ -250,16 +242,12 @@
                     {
                       "workerIndex": 2,
                       "status": "passed",
-                      "duration": 2097,
+                      "duration": 1217,
                       "errors": [],
-                      "stdout": [
-                        {
-                          "text": "/home/runner/work/warrr-ui/warrr-ui/.playwright/snapshots/components/Button.test.ts-snapshots/Button-컴포넌트-primary-시각적-회귀-테스트-1-webkit-linux.png is re-generated, writing actual.\n"
-                        }
-                      ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-09-07T07:38:15.342Z",
+                      "startTime": "2024-09-07T07:59:50.389Z",
                       "attachments": []
                     }
                   ],
@@ -286,12 +274,12 @@
                     {
                       "workerIndex": 2,
                       "status": "passed",
-                      "duration": 987,
+                      "duration": 1560,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-09-07T07:38:18.263Z",
+                      "startTime": "2024-09-07T07:59:52.651Z",
                       "attachments": []
                     }
                   ],
@@ -310,8 +298,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2024-09-07T07:38:08.318Z",
-    "duration": 10975.167000000001,
+    "startTime": "2024-09-07T07:59:43.402Z",
+    "duration": 10850.853000000001,
     "expected": 6,
     "skipped": 0,
     "unexpected": 0,

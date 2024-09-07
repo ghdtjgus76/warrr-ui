@@ -65,15 +65,10 @@ jobs:
           name: storybook-build
           path: packages/primitive/storybook-static
 
-      - name: pnpm 설치 및 캐시
-        run: pnpm add serve
-
       - name: 스토리북 실행
         run: |
-          pnpm exec serve -l 6006 packages/primitive/storybook-static &
+          npx serve -l 6006 packages/primitive/storybook-static &
           echo $! > .storybook-pid
-        env:
-          PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
 
       - name: VRT 테스트 실행
         id: vrt-test

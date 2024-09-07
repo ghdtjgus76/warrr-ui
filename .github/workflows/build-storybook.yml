@@ -1,6 +1,7 @@
 name: Storybook 빌드 및 아티팩트 생성
 
-on: workflow_call
+on:
+  workflow_call:
 
 jobs:
   build:

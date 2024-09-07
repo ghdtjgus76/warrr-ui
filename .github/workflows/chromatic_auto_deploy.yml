@@ -4,8 +4,6 @@ on:
   pull_request:
     branches:
       - develop
-    paths:
-      - "packages/primitive/components/**/*"
 
 permissions:
   contents: read
@@ -40,7 +38,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
-  
+
       - name: 의존성 설치
         run: |
           if [ ! -d "node_modules" ]; then

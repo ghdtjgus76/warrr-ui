@@ -4,8 +4,6 @@ on:
   pull_request:
     branches:
       - develop
-    paths:
-      - "packages/primitive/components/**/*"
 
 permissions:
   contents: read

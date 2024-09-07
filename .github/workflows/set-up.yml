@@ -1,4 +1,4 @@
-name: 공통 set-up
+name: 설정 및 의존성 설치
 
 on: workflow_call
 
@@ -20,5 +20,23 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8.15.6
-          run_install: |
-            args: ["--frozen-lockfile"]
+
+      - name: 캐시 의존성
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: 의존성 설치
+        run: pnpm install --frozen-lockfile
+
+      - name: 의존성 아티팩트로 저장
+        uses: actions/upload-artifact@v3
+        with:
+          name: pnpm-dependencies
+          path: |
+            node_modules
+            ~/.pnpm-store

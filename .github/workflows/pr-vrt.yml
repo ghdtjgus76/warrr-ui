@@ -1,7 +1,5 @@
 name: PR VRT 테스트
 on:
-  pull_request:
-    branches: [develop]
   workflow_run:
     workflows: [Storybook 빌드 및 아티팩트 생성]
     types: [completed]
